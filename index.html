@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>My Library</title>
+</head>
+<body>
+    <h1>My Book Collection</h1>
+    <div class="center">
+        <input type="checkbox" id="show">
+        <label for="show" class="show-btn">Add a Book</label>
+        <div class="container">
+            <label for="show" class="close-btn fa fa-window-close-o" aria-hidden="true"></label>
+            <div class="text">New Book</div>
+            <form action="#">
+                <div class="content">
+                    <label>Title</label>
+                    <input type="text" required>
+                </div>
+                <div class="content">
+                    <label>Author</label>
+                    <input type="text" required>
+                </div>
+                <div class="content">
+                    <label>Pages</label>
+                    <input type="text" required>
+                </div>
+                <div class="content">
+                    <label>Read or TBR</label>
+                    <input type="text" required>
+                </div>
+                <div class="btn">
+                    <div class="inner"></div>
+                    <button type="submit">Add Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<!--   <div id="removeBook">Remove Book</div>
+        <button id="remove">Delete</button> --> 
+<script src="library.js"></script>
+</body>
+</html>
