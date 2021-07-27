@@ -1,8 +1,26 @@
 const title = document.getElementById("title");
 const button = document.getElementById("button");
 
-let myLibrary = [];
+let myLibrary = [
+    {'title': 'Harry Potter', 'author': 'JK Rowling', 'pages': 500}
+];
 //const remove = document.getElementById('remove');
+
+buildTable(myLibrary)
+
+function buildTable(data) {
+    let table = document.getElementById('myTable')
+
+    for (let i = 0; i < data.length; i++) {
+        let row = `<tr>
+                        <td>${data[i].title}</td>
+                        <td>${data[i].author}</td>
+                        <td>${data[i].pages}</td>
+                   </tr>`
+        table.innerHTML += row;
+    }
+}
+
 
 class Book {
     constructor(author, title, pages, readOrNot) {
@@ -18,6 +36,9 @@ class Book {
 
 function addToLibrary() {
     //use local storage
+    const book = new Book(title, author, pages);
+    myLibrary.push(book);
+    buildTable(myLibrary)
 }
 
 function populateStorage() {
@@ -37,7 +58,8 @@ form.addEventListener('submit', function(e) {
     let title = document.getElementById('title').value
     let author = document.getElementById('author').value
     let pages = document.getElementById('pages').value 
-    console.log(title);
-    console.log(author);
-    console.log(pages);
+    //console.log(title);
+    //console.log(author);
+    //console.log(pages);
+    addToLibrary(title, author, pages);
 })
