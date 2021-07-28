@@ -1,12 +1,15 @@
 const title = document.getElementById("title");
 const button = document.getElementById("button");
+let currentTitle = "";
+let currentAuthor = "";
+let currentPages = ""; 
 
 let myLibrary = [
     {'title': 'Harry Potter', 'author': 'JK Rowling', 'pages': 500}
 ];
 //const remove = document.getElementById('remove');
 
-buildTable(myLibrary)
+//buildTable(myLibrary)
 
 function buildTable(data) {
     let table = document.getElementById('myTable')
@@ -21,11 +24,10 @@ function buildTable(data) {
     }
 }
 
-
 class Book {
-    constructor(author, title, pages, readOrNot) {
-        this.author = author;
+    constructor(title, author, pages, readOrNot) {
         this.title = title;
+        this.author = author;
         this.pages = pages;
         this.readOrNot = readOrNot;
     }
@@ -36,7 +38,7 @@ class Book {
 
 function addToLibrary() {
     //use local storage
-    const book = new Book(title, author, pages);
+    const book = new Book(currentTitle, currentAuthor, currentPages);
     myLibrary.push(book);
     buildTable(myLibrary)
 }
@@ -55,11 +57,11 @@ form = document.getElementById('form');
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    let title = document.getElementById('title').value
-    let author = document.getElementById('author').value
-    let pages = document.getElementById('pages').value 
-    //console.log(title);
-    //console.log(author);
-    //console.log(pages);
-    addToLibrary(title, author, pages);
+    let newTitle = document.getElementById('title').value
+    let newAuthor = document.getElementById('author').value
+    let newPages = document.getElementById('pages').value 
+    currentTitle = newTitle;
+    currentAuthor = newAuthor;
+    currentPages = newPages;
+    addToLibrary();
 })
