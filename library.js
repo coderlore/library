@@ -1,8 +1,8 @@
 const title = document.getElementById("title");
 const button = document.getElementById("button");
-let currentTitle = "";
-let currentAuthor = "";
-let currentPages = ""; 
+let newTitle = "";
+let newAuthor = "";
+let newPages = ""; 
 
 let myLibrary = [
     {'title': 'Harry Potter', 'author': 'JK Rowling', 'pages': 500}
@@ -11,7 +11,7 @@ let myLibrary = [
 
 //buildTable(myLibrary)
 
-function buildTable(data) {
+/*function buildTable(data) {
     let table = document.getElementById('myTable')
 
     for (let i = 0; i < data.length; i++) {
@@ -22,7 +22,7 @@ function buildTable(data) {
                    </tr>`
         table.innerHTML += row;
     }
-}
+}*/
 
 class Book {
     constructor(title, author, pages, readOrNot) {
@@ -38,9 +38,9 @@ class Book {
 
 function addToLibrary() {
     //use local storage
-    const book = new Book(currentTitle, currentAuthor, currentPages);
+    const book = new Book(newTitle, newAuthor, newPages);
     myLibrary.push(book);
-    buildTable(myLibrary)
+    //buildTable(myLibrary)
 }
 
 function populateStorage() {
@@ -54,14 +54,23 @@ function populateStorage() {
 //console.log(book.readOrNot) 
 
 form = document.getElementById('form');
+let row = 2; 
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    let newTitle = document.getElementById('title').value
-    let newAuthor = document.getElementById('author').value
-    let newPages = document.getElementById('pages').value 
-    currentTitle = newTitle;
-    currentAuthor = newAuthor;
-    currentPages = newPages;
+    newTitle = document.getElementById('title').value
+    newAuthor = document.getElementById('author').value
+    newPages = document.getElementById('pages').value 
     addToLibrary();
+    let display = document.getElementById('table');
+    let newRow = display.insertRow(row);
+    let cell1 = newRow.insertCell(0);
+    let cell2 = newRow.insertCell(1);
+    let cell3 = newRow.insertCell(2); 
+
+    cell1.innerHTML = newTitle;
+    cell2.innerHTML = newAuthor;
+    cell3.innerHTML = newPages;
+
+    row++;
 })

@@ -11,7 +11,7 @@
     <h1>My Book Collection</h1>
     <div class="center">
         <input type="checkbox" id="show">
-        <label for="show" class="show-btn">Add a book</label>
+        <label for="show" class="show-btn">+ Book</label>
         <div class="container">
             <label for="show" class="close-btn fa fa-window-close-o" aria-hidden="true"></label>
             <div class="text">New Book</div>
@@ -39,12 +39,17 @@
             </form>
         </div>
     </div>
-    <table class="table">
+    <table class="table" id="table">
         <tr class="info">
             <th>Title</th>
             <th>Author</th>
             <th>Pages Read</th>
         </tr>
+        <tr>
+            <td>Harry Potter</td>
+            <td>JK Rowling</td>
+            <td>500</td>
+       </tr>
         <tbody id="myTable">
             
         </tbody>
