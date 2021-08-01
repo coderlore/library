@@ -67,10 +67,14 @@ form.addEventListener('submit', function(e) {
     let cell1 = newRow.insertCell(0);
     let cell2 = newRow.insertCell(1);
     let cell3 = newRow.insertCell(2); 
+    
 
     cell1.innerHTML = newTitle;
     cell2.innerHTML = newAuthor;
     cell3.innerHTML = newPages;
 
     row++;
+
+    //document.getElementById('close-btn').setAttribute('aria-hidden', true)
+    
 })
