@@ -29,11 +29,12 @@
                     <input id="pages" type="number" required>
                 </div>
                 <div class="content">
-                    <label>Read or TBR</label>
-                    <select name="readOrNot" id="readOrNot">
-                        <option value="read">Read</option>
-                        <option value="notRead">Not Read</option>
-                    </select>
+                    <div>
+                        <select name="readOrNot" id="readOrNot">
+                            <option value="Read">Read</option>
+                            <option value="NotRead">Not Read</option>
+                        </select>
+                    </div>
                     <!-- <input type="text" required> -->
                 </div>
                 <div class="btn">
@@ -47,13 +48,15 @@
         <tr class="info" id="info">
             <th>Title</th>
             <th>Author</th>
-            <th>Pages Read</th>
+            <th>Total Pages</th>
+            <th>Read</th>
             <th>Delete</th>
         </tr>
         <tr>
             <td>Harry Potter</td>
             <td>JK Rowling</td>
             <td>500</td>
+            <td><button onclick="readOrTBR(this)" id="bookRead" value="read">Read</td>
             <td><button onclick="deleteRow(this)">Delete</button></td>
        </tr>
         <tbody id="myTable">

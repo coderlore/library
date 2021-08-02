@@ -53,6 +53,7 @@ function populateStorage() {
 //console.log(book.pages) 
 //console.log(book.readOrNot) 
 
+let newRead = "";
 form = document.getElementById('form');
 let row = 2; 
 
@@ -61,6 +62,8 @@ form.addEventListener('submit', function(e) {
     newTitle = document.getElementById('title').value
     newAuthor = document.getElementById('author').value
     newPages = document.getElementById('pages').value 
+    newRead = document.getElementById('readOrNot').value
+    console.log(newRead)
     addToLibrary();
 
     let newRow = display.insertRow(row);
@@ -68,11 +71,13 @@ form.addEventListener('submit', function(e) {
     let cell2 = newRow.insertCell(1);
     let cell3 = newRow.insertCell(2); 
     let cell4 = newRow.insertCell(3);
+    let cell5 = newRow.insertCell(4);
 
     cell1.innerHTML = newTitle;
     cell2.innerHTML = newAuthor;
     cell3.innerHTML = newPages;
-    cell4.innerHTML = `<button onclick="deleteRow(this)">Delete</button>`
+    cell4.innerHTML = `<button onclick="readOrTBR(this)" id="bookRead">${newRead}</button>`
+    cell5.innerHTML = `<button onclick="deleteRow(this)">Delete</button>`
 
     row++;
 
@@ -80,12 +85,14 @@ form.addEventListener('submit', function(e) {
 })
 
 function deleteRow(x) {
-    if (row == 2) {
-        alert('Add a new book first!')
-    } else {
-        display.deleteRow(x.parentElement.parentElement.rowIndex)
-        //remove object from myLibrary
-        myLibrary.splice(0,1);
-        row--;
-    }
+    display.deleteRow(x.parentElement.parentElement.rowIndex)
+    //remove object from myLibrary
+    myLibrary.splice(0,1);
+    row--;
+}
+
+function readOrTBR() {
+    const bookRead = document.getElementById('bookRead');
+    let bookStatus = bookRead.value;
+    console.log(bookStatus);
 }
