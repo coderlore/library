@@ -30,7 +30,11 @@
                 </div>
                 <div class="content">
                     <label>Read or TBR</label>
-                    <input type="text" required>
+                    <select name="readOrNot" id="readOrNot">
+                        <option value="read">Read</option>
+                        <option value="notRead">Not Read</option>
+                    </select>
+                    <!-- <input type="text" required> -->
                 </div>
                 <div class="btn">
                     <div class="inner"></div>
@@ -44,11 +48,13 @@
             <th>Title</th>
             <th>Author</th>
             <th>Pages Read</th>
+            <th>Delete</th>
         </tr>
         <tr>
             <td>Harry Potter</td>
             <td>JK Rowling</td>
             <td>500</td>
+            <td><button onclick="deleteRow(this)">Delete</button></td>
        </tr>
         <tbody id="myTable">
             

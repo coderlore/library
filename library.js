@@ -1,5 +1,5 @@
 const title = document.getElementById("title");
-const button = document.getElementById("button");
+const display = document.getElementById('table');
 let newTitle = "";
 let newAuthor = "";
 let newPages = ""; 
@@ -62,19 +62,30 @@ form.addEventListener('submit', function(e) {
     newAuthor = document.getElementById('author').value
     newPages = document.getElementById('pages').value 
     addToLibrary();
-    let display = document.getElementById('table');
+
     let newRow = display.insertRow(row);
     let cell1 = newRow.insertCell(0);
     let cell2 = newRow.insertCell(1);
     let cell3 = newRow.insertCell(2); 
-    
+    let cell4 = newRow.insertCell(3);
 
     cell1.innerHTML = newTitle;
     cell2.innerHTML = newAuthor;
     cell3.innerHTML = newPages;
+    cell4.innerHTML = `<button onclick="deleteRow(this)">Delete</button>`
 
     row++;
 
     //document.getElementById('close-btn').setAttribute('aria-hidden', true)
-    
 })
+
+function deleteRow(x) {
+    if (row == 2) {
+        alert('Add a new book first!')
+    } else {
+        display.deleteRow(x.parentElement.parentElement.rowIndex)
+        //remove object from myLibrary
+        myLibrary.splice(0,1);
+        row--;
+    }
+}
