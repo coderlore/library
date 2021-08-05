@@ -1,28 +1,14 @@
 const title = document.getElementById("title");
 const display = document.getElementById('table');
+const readBtn = document.getElementsByClassName('readBtn');
 let newTitle = "";
 let newAuthor = "";
 let newPages = ""; 
+let cell4 = "";
 
 let myLibrary = [
     {'title': 'Harry Potter', 'author': 'JK Rowling', 'pages': 500}
 ];
-//const remove = document.getElementById('remove');
-
-//buildTable(myLibrary)
-
-/*function buildTable(data) {
-    let table = document.getElementById('myTable')
-
-    for (let i = 0; i < data.length; i++) {
-        let row = `<tr>
-                        <td>${data[i].title}</td>
-                        <td>${data[i].author}</td>
-                        <td>${data[i].pages}</td>
-                   </tr>`
-        table.innerHTML += row;
-    }
-}*/
 
 class Book {
     constructor(title, author, pages, readOrNot) {
@@ -31,14 +17,11 @@ class Book {
         this.pages = pages;
         this.readOrNot = readOrNot;
     }
-    /*remove.addEventListner('click', () => {
-        removeBook();
-    })*/
 }
 
 function addToLibrary() {
     //use local storage
-    const book = new Book(newTitle, newAuthor, newPages);
+    const book = new Book(newTitle, newAuthor, newPages, newRead);
     myLibrary.push(book);
     //buildTable(myLibrary)
 }
@@ -53,7 +36,7 @@ function populateStorage() {
 //console.log(book.pages) 
 //console.log(book.readOrNot) 
 
-let newRead = "";
+let newRead = "Read";
 form = document.getElementById('form');
 let row = 2; 
 
@@ -63,25 +46,21 @@ form.addEventListener('submit', function(e) {
     newAuthor = document.getElementById('author').value
     newPages = document.getElementById('pages').value 
     newRead = document.getElementById('readOrNot').value
-    console.log(newRead)
     addToLibrary();
 
     let newRow = display.insertRow(row);
     let cell1 = newRow.insertCell(0);
     let cell2 = newRow.insertCell(1);
     let cell3 = newRow.insertCell(2); 
-    let cell4 = newRow.insertCell(3);
+    cell4 = newRow.insertCell(3);
     let cell5 = newRow.insertCell(4);
 
     cell1.innerHTML = newTitle;
     cell2.innerHTML = newAuthor;
     cell3.innerHTML = newPages;
-    cell4.innerHTML = `<button onclick="readOrTBR(this)" id="bookRead">${newRead}</button>`
+    cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" value=${newRead}>${newRead}</button>`
     cell5.innerHTML = `<button onclick="deleteRow(this)">Delete</button>`
-
     row++;
-
-    //document.getElementById('close-btn').setAttribute('aria-hidden', true)
 })
 
 function deleteRow(x) {
@@ -92,7 +71,30 @@ function deleteRow(x) {
 }
 
 function readOrTBR() {
-    const bookRead = document.getElementById('bookRead');
-    let bookStatus = bookRead.value;
-    console.log(bookStatus);
+    if (newRead == 'Read') {
+        newRead = 'Not Read';
+        //document.getElementById('bookRead').innerHTML = 'Not Read';
+        cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" value=${newRead}>${newRead}</button>`;
+    } else if (newRead == 'Not Read') {
+        newRead = 'Read';
+        //document.getElementById('bookRead').innerHTML = 'Read';
+        cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" value=${newRead}>${newRead}</button>`;
+    }
 }
+
+// Example of object and constructors
+/*function findBook (myLibrary, title){
+    for (Book of myLibrary)
+        if (Book.name == title) {
+            return myLibrary.indexOf(Book);
+        }
+}
+
+function changeStatus(Book) {
+    if (myLibrary[Book].readOrNot === 'Read') {
+        myLibrary[Book].readOrNot = 'Not Read';
+    } else {
+        myLibrary[Book].readOrNot = "Read"
+    }
+}*/
+
