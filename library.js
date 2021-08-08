@@ -58,7 +58,7 @@ form.addEventListener('submit', function(e) {
     cell1.innerHTML = newTitle;
     cell2.innerHTML = newAuthor;
     cell3.innerHTML = newPages;
-    cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" value=${newRead}>${newRead}</button>`
+    cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" id="bookRead2">${newRead}</button>`
     cell5.innerHTML = `<button onclick="deleteRow(this)">Delete</button>`
     row++;
 })
@@ -70,7 +70,32 @@ function deleteRow(x) {
     row--;
 }
 
-function readOrTBR() {
+const btns = document.querySelectorAll('.readBtn > table > tbody > tr > td:nth-child(1) button');
+btns.forEach(btn => {
+    btn.addEventListener('click', event => {
+         //console.log( event.target.id );
+         alert('Im clicked')
+    });
+ 
+ });
+
+function readOrTBR(elem) {
+    /*btn.addEventListener('click',() => {
+        alert("I've been clicked")
+    });*/
+    let whichBtn = elem.id;
+    switch (whichBtn) {
+        case 'bookRead':
+            alert('Im book 1');
+            break;
+        case 'bookRead2':
+            alert('Im book2');
+            break;
+        default:
+            alert('idk what im doing');
+    }
+    
+    /*  onclick="readOrTBR(this)" 
     if (newRead == 'Read') {
         newRead = 'Not Read';
         //document.getElementById('bookRead').innerHTML = 'Not Read';
@@ -79,7 +104,7 @@ function readOrTBR() {
         newRead = 'Read';
         //document.getElementById('bookRead').innerHTML = 'Read';
         cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" value=${newRead}>${newRead}</button>`;
-    }
+    }*/
 }
 
 // Example of object and constructors
