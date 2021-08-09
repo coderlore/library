@@ -11,7 +11,7 @@
     <h1>My Book Collection</h1>
     <div class="center">
         <input type="checkbox" id="show">
-        <label for="show" class="show-btn">+ Book</label>
+        <label for="show" class="show-btn" onclick="show()">+ Book</label>
         <div class="container" id="container">
             <label for="show" class="close-btn fa fa-window-close-o" aria-hidden="true"></label>
             <div class="text">New Book</div>
@@ -56,7 +56,7 @@
             <td>Harry Potter</td>
             <td>JK Rowling</td>
             <td>500</td>
-            <td><button onclick="readOrTBR(this)" class="readBtn" id="bookRead">Read</button></td>
+            <td><button onclick="readOrTBR(this)" data-btn="Not Read" class="readBtn" id="bookRead">Not Read</button></td>
             <td><button onclick="deleteRow(this)">Delete</button></td>
        </tr>
         <tbody id="myTable">

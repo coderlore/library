@@ -1,6 +1,7 @@
 const title = document.getElementById("title");
 const display = document.getElementById('table');
-const readBtn = document.getElementsByClassName('readBtn');
+const readBtn = document.querySelectorAll('readBtn');
+const container = document.getElementById('container');
 let newTitle = "";
 let newAuthor = "";
 let newPages = ""; 
@@ -17,18 +18,17 @@ class Book {
         this.pages = pages;
         this.readOrNot = readOrNot;
     }
-}
+};
 
 function addToLibrary() {
     //use local storage
     const book = new Book(newTitle, newAuthor, newPages, newRead);
     myLibrary.push(book);
-    //buildTable(myLibrary)
-}
+};
 
 function populateStorage() {
     localStorage.setItem('book', 0);
-}
+};
 
 //const book = new Book('JK','Harry Potter','400','read');
 //console.log(book.title)
@@ -58,55 +58,33 @@ form.addEventListener('submit', function(e) {
     cell1.innerHTML = newTitle;
     cell2.innerHTML = newAuthor;
     cell3.innerHTML = newPages;
-    cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" id="bookRead2">${newRead}</button>`
+    cell4.innerHTML = `<button onclick="readOrTBR(this)" data-btn="${newRead}" class="readBtn" id="bookRead2">${newRead}</button>`
     cell5.innerHTML = `<button onclick="deleteRow(this)">Delete</button>`
     row++;
-})
+    container.style.display="none";
+});
 
 function deleteRow(x) {
     display.deleteRow(x.parentElement.parentElement.rowIndex)
     //remove object from myLibrary
     myLibrary.splice(0,1);
     row--;
-}
-
-const btns = document.querySelectorAll('.readBtn > table > tbody > tr > td:nth-child(1) button');
-btns.forEach(btn => {
-    btn.addEventListener('click', event => {
-         //console.log( event.target.id );
-         alert('Im clicked')
-    });
- 
- });
+};
 
 function readOrTBR(elem) {
-    /*btn.addEventListener('click',() => {
-        alert("I've been clicked")
-    });*/
-    let whichBtn = elem.id;
-    switch (whichBtn) {
-        case 'bookRead':
-            alert('Im book 1');
-            break;
-        case 'bookRead2':
-            alert('Im book2');
-            break;
-        default:
-            alert('idk what im doing');
-    }
-    
-    /*  onclick="readOrTBR(this)" 
-    if (newRead == 'Read') {
-        newRead = 'Not Read';
-        //document.getElementById('bookRead').innerHTML = 'Not Read';
-        cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" value=${newRead}>${newRead}</button>`;
-    } else if (newRead == 'Not Read') {
-        newRead = 'Read';
-        //document.getElementById('bookRead').innerHTML = 'Read';
-        cell4.innerHTML = `<button onclick="readOrTBR(this)" class="readBtn" value=${newRead}>${newRead}</button>`;
-    }*/
-}
+    attr = elem.getAttribute('data-btn')
+    if (attr == 'Read') {
+        elem.innerHTML = 'Not Read';
+        elem.setAttribute('data-btn','Not Read');
+    } else if (attr == 'Not Read') {
+        elem.innerHTML = 'Read';
+        elem.setAttribute('data-btn','Read');
+    };
+};
 
+function show() {
+    container.style.display="block";
+}
 // Example of object and constructors
 /*function findBook (myLibrary, title){
     for (Book of myLibrary)
