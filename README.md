@@ -2,4 +2,4 @@
 
 Created a library to add and remove books read. 
 
-[Live Code] [https://coderlore.github.io/library/]
+[Live Code](https://coderlore.github.io/library/)
